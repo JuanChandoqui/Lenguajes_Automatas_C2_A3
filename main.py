@@ -2,6 +2,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic, QtGui
 
+from Models.read_regex import readRegex
+
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -13,8 +15,7 @@ class Window(QMainWindow):
     
     def isClickedButtonSearch(self):
         text = self.textField_text.text()
-        input_text = list(text)
-        status = True
+        status = readRegex(text)
 
         if(status):
             self.label_status.setText('CURP VÁLIDA / CURP DISPONIBLE')
