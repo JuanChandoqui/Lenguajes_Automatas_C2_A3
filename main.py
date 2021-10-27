@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic, QtGui
 from Controllers.information_controller import WindowInformation
+from Models.read_csv import writeCSVFile
 
 from Models.read_regex import readRegex
 
@@ -16,19 +17,22 @@ class Window(QMainWindow):
         self.button_search.clicked.connect(self.isClickedButtonSearch)
         self.button_exit.clicked.connect(self.close)
         self.button_show_information.clicked.connect(self.isClickedButtonShowInformation)
-    
-    
+
     def isClickedButtonSearch(self):
         global curp_text
         text = self.textField_text.text()
+        text = text.replace(' ', '')
         curp_text = text
         status = readRegex(text)
+
+        writeCSVFile(status, curp_text)
 
         if(status):
             self.button_show_information.show()
             self.label_status.setText('CURP VÁLIDA / CURP DISPONIBLE')
             self.label_status.setStyleSheet('background-color: green; color: white; font-size: 12px; font-weight: bold')
         else:
+            self.button_show_information.hide()
             self.label_status.setText('CURP INVÁLIDA!')
             self.label_status.setStyleSheet('background-color: red; color: white; font-size: 12px; font-weight: bold')
     
