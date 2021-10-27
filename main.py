@@ -1,29 +1,43 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic, QtGui
+from Controllers.information_controller import WindowInformation
 
 from Models.read_regex import readRegex
+
+curp_text = ''
 
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Views/init.ui', self)
+        self.button_show_information.hide()
         self.photo_background.setPixmap(QtGui.QPixmap('./Resources/bandera_mexico.jpg'))
         self.button_search.clicked.connect(self.isClickedButtonSearch)
         self.button_exit.clicked.connect(self.close)
+        self.button_show_information.clicked.connect(self.isClickedButtonShowInformation)
     
     
     def isClickedButtonSearch(self):
+        global curp_text
         text = self.textField_text.text()
+        curp_text = text
         status = readRegex(text)
 
         if(status):
+            self.button_show_information.show()
             self.label_status.setText('CURP VÁLIDA / CURP DISPONIBLE')
             self.label_status.setStyleSheet('background-color: green; color: white; font-size: 12px; font-weight: bold')
         else:
             self.label_status.setText('CURP INVÁLIDA!')
             self.label_status.setStyleSheet('background-color: red; color: white; font-size: 12px; font-weight: bold')
     
+    def isClickedButtonShowInformation(self):
+        global curp_text
+        w = WindowInformation(curp_text)
+        self.demo = w
+        self.demo.show()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     demo = Window()

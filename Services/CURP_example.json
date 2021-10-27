@@ -1,0 +1,24 @@
+{
+    "birthdate": "09/16/1988",
+    "curp": "BEHJ880916HMNNRN02",
+    "entity_birth": "MN",
+    "mothers_maiden_name": "Hernandez",
+    "names": "Juan",
+    "paternal_surname": "Benitez",
+    "probation_document": "ACTA DE NACIMIENTO",
+    "probation_document_data": {
+        "anioReg": "1988",
+        "claveEntidadRegistro": "16",
+        "claveMunicipioRegistro": "053",
+        "entidadRegistro": "MICHOACAN",
+        "foja": "",
+        "libro": "",
+        "municipioRegistro": "MORELIA",
+        "numActa": "00145",
+        "tomo": ""
+    },
+    "renapo_valid": true,
+    "sex": "HOMBRE",
+    "status_curp": "RCN",
+    "transaction_id": "3757a480b80c5eb237128b7d2c7daf4540aa6437e292f5315477d7d6e9296ec8"
+}
