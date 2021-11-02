@@ -27,7 +27,6 @@ def readCSVCurps():
         mc_count = 0
         ms_count = 0
         nt_count = 0
-        ne_count = 0
         nl_count = 0
         oc_count = 0
         pl_count = 0
