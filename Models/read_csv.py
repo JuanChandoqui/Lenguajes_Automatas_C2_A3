@@ -192,9 +192,6 @@ def readCSVCurps():
                             zs_count += 1
                             federal_entity['ZACATECAS'] = zs_count
 
-            # print('SEX COUNT: ', sex_dict)
-            # print('FEDERAL ENTITYS: ', federal_entity)
-
         dict_freq_mounth = Freq_mes(list_curps)
         dict_freq_age = Freq_edad(list_curps)
 
