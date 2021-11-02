@@ -45,7 +45,7 @@ def readCSVCurps():
     sex_dict = dict()
     federal_entity = dict()
 
-    with open('./Resources/curps_table_valid.csv', newline='') as csvfile:
+    with open('./Resources/Tables/curps_table_valid.csv', newline='') as csvfile:
 
         spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         for row in spamreader:

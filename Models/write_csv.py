@@ -2,8 +2,8 @@ import csv
 import os
 
 def writeCSVFile(isaceptable, curp):
-        path_csv_valid = './Resources/curps_table_valid.csv'
-        path_csv_invalid = './Resources/curps_table_invalid.csv'
+        path_csv_valid = './Resources/Tables/curps_table_valid.csv'
+        path_csv_invalid = './Resources/Tables/curps_table_invalid.csv'
         print(curp)
         if(os.path.exists(path_csv_valid)):
             print('FILE EXIST!')  
