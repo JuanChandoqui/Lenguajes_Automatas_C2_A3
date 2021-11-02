@@ -129,7 +129,7 @@ class Window(QMainWindow):
 
     
     def generatePDFReport(self):
-        PATH = "./Resources/Report/report_statistics.pdf"
+        PATH = "report_statistics.pdf"
 
         with open(PATH,"wb") as f:
             f.write(img2pdf.convert(glob.glob("./Resources/Statistics/*.png")))
