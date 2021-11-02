@@ -54,7 +54,8 @@ class Window(QMainWindow):
 
     #-------GRAPHICS---------------------------------------
     def barMonthWithMoreBirth(self):
-        print('grafica')
+        global data_statics
+        print(data_statics[2])
 
     
     def barFederalEntitys(self):
@@ -79,7 +80,8 @@ class Window(QMainWindow):
 
     
     def pieAgePerson(self):
-        print('grafica')
+        global data_statics
+        print(data_statics[3])
 
     
     def pieSex(self):
