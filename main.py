@@ -1,9 +1,10 @@
 import sys
 import os
 import numpy as np
+import img2pdf
+import glob
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic, QtGui
-import matplotlib
 from Controllers.information_controller import WindowInformation
 from Models.read_csv import readCSVCurps
 from Models.write_csv import writeCSVFile
@@ -18,7 +19,7 @@ class Window(QMainWindow):
         super().__init__()
         uic.loadUi('./Views/init.ui', self)
         self.button_show_information.hide()
-        self.photo_background.setPixmap(QtGui.QPixmap('./Resources/bandera_mexico.jpg'))
+        self.photo_background.setPixmap(QtGui.QPixmap('./Resources/Images/bandera_mexico.jpg'))
         self.button_search.clicked.connect(self.isClickedButtonSearch)
         self.button_exit.clicked.connect(self.close)
         self.button_show_information.clicked.connect(self.isClickedButtonShowInformation)
@@ -26,6 +27,7 @@ class Window(QMainWindow):
         self.button_entidad_registros.clicked.connect(self.barFederalEntitys)
         self.button_edad_personas.clicked.connect(self.pieAgePerson)
         self.button_sexo.clicked.connect(self.pieSex)
+        self.button_open_PDF.clicked.connect(self.generatePDFReport)
         
 
     def isClickedButtonSearch(self):
@@ -55,7 +57,23 @@ class Window(QMainWindow):
     #-------GRAPHICS---------------------------------------
     def barMonthWithMoreBirth(self):
         global data_statics
-        print(data_statics[2])
+
+        x = data_statics[2].keys()
+        y = data_statics[2].values()
+
+        fig, ax = pyplot.subplots()    
+        width = 0.75 
+        ind = np.arange(len(y))  
+        ax.barh(ind, y, width, color="black")
+        ax.set_yticks(ind+width/2)
+        ax.set_yticklabels(x, minor=False)
+        for i, v in enumerate(y):
+            ax.text(v + 3, i + .25, str(v), color='black')
+
+        pyplot.title('Meses con mas nacimientos')
+        pyplot.xlabel('Personas')     
+        pyplot.show()
+        pyplot.savefig(os.path.join('./Resources/Statistics/month_with_more_birth.png'), dpi=300, format='png', bbox_inches='tight') 
 
     
     def barFederalEntitys(self):
@@ -81,7 +99,23 @@ class Window(QMainWindow):
     
     def pieAgePerson(self):
         global data_statics
-        print(data_statics[3])
+
+        x = data_statics[3].keys()
+        y = data_statics[3].values()
+
+        fig, ax = pyplot.subplots()    
+        width = 0.75 
+        ind = np.arange(len(y))  
+        ax.barh(ind, y, width, color="green")
+        ax.set_yticks(ind+width/2)
+        ax.set_yticklabels(x, minor=False)
+        for i, v in enumerate(y):
+            ax.text(v + 3, i + .25, str(v), color='green')
+
+        pyplot.title('Meses con mas nacimientos')
+        pyplot.xlabel('Personas')     
+        pyplot.show()
+        pyplot.savefig(os.path.join('./Resources/Statistics/pie_age_person.png'), dpi=300, format='png', bbox_inches='tight')
 
     
     def pieSex(self):
@@ -91,7 +125,17 @@ class Window(QMainWindow):
         value_2 = data_statics[0].keys()
         pyplot.pie(value_1, labels= value_2, autopct='%.2f %%')
         pyplot.show()
-        pyplot.savefig(os.path.join('./Resources/Statistics/sex_statics.png'), dpi=300, format='png', bbox_inches='tight') 
+        pyplot.savefig(os.path.join('./Resources/Statistics/sex_statics.png'), dpi=300, format='png', bbox_inches='tight')
+
+    
+    def generatePDFReport(self):
+        PATH = "./Resources/Report/report_statistics.pdf"
+
+        with open(PATH,"wb") as f:
+            f.write(img2pdf.convert(glob.glob("./Resources/Statistics/*.png")))
+
+        os.system(PATH)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

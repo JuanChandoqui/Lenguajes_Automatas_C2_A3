@@ -290,6 +290,24 @@ border-radius: 10px;</string>
      <string>MOSTRAR</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="button_open_PDF">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>510</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(193, 0, 0);
+color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>PDF</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
