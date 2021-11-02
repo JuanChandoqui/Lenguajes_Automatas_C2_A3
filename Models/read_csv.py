@@ -5,52 +5,54 @@ from dateutil.relativedelta import relativedelta
 
 
 def readCSVCurps():
-    list_curps = []
-    list_statistics_dates = []
-    count_male = 0
-    count_female = 0
-    as_count = 0
-    bs_count = 0
-    bc_count = 0
-    cs_count = 0
-    cc_count = 0
-    cm_count = 0
-    ch_count = 0
-    cl_count = 0
-    df_count = 0
-    dg_count = 0
-    gt_count = 0
-    gr_count = 0
-    hg_count = 0
-    jc_count = 0
-    mn_count = 0
-    mc_count = 0
-    ms_count = 0
-    nt_count = 0
-    nl_count = 0
-    oc_count = 0
-    pl_count = 0
-    qt_count = 0
-    qr_count = 0
-    sl_count = 0
-    sr_count = 0
-    sp_count = 0
-    tc_count = 0
-    ts_count = 0
-    tl_count = 0
-    vz_count = 0
-    yn_count = 0
-    zs_count = 0
+    with open('./Resources/curps_table_valid.csv', newline='') as csvfile:
+        list_curps = []
+        list_statistics_dates = []
+        count_male = 0
+        count_female = 0
+        as_count = 0
+        bs_count = 0
+        bc_count = 0
+        cs_count = 0
+        cc_count = 0
+        cm_count = 0
+        ch_count = 0
+        cl_count = 0
+        df_count = 0
+        dg_count = 0
+        gt_count = 0
+        gr_count = 0
+        hg_count = 0
+        jc_count = 0
+        mn_count = 0
+        mc_count = 0
+        ms_count = 0
+        nt_count = 0
+        ne_count = 0
+        nl_count = 0
+        oc_count = 0
+        pl_count = 0
+        qt_count = 0
+        qr_count = 0
+        sl_count = 0
+        sr_count = 0
+        sp_count = 0
+        tc_count = 0
+        ts_count = 0
+        tl_count = 0
+        vz_count = 0
+        yn_count = 0
+        zs_count = 0
 
-    sex_dict = dict()
-    federal_entity = dict()
+        sex_dict = dict()
+        federal_entity = dict()
 
-    with open('./Resources/Tables/curps_table_valid.csv', newline='') as csvfile:
+        with open('./Resources/curps_table_valid.csv', newline='') as csvfile:
 
-        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-        for row in spamreader:
-            curp = ', '.join(row)
-            list_curps.append(curp)
+            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            for row in spamreader:
+                curp = ', '.join(row)
+                list_curps.append(curp)
 
             list_curps.pop(0)
 
