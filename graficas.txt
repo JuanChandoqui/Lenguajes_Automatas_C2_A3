@@ -1,0 +1,4 @@
+1.- MESES CON MAS NACIMIENTOS
+2.- Entidad con mas registros
+3.- Edad de las personas
+4.- Sexo

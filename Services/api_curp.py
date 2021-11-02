@@ -9,8 +9,8 @@ def verificationCURP(curp):
     headers = {
         'content-type': "application/json",
         'x-rapidapi-host': "curp-renapo.p.rapidapi.com",
-        'x-rapidapi-key': "761522b92amsh4a4cddc0ed6980fp1e53f0jsnd6db755e86db"
-        }
+        'x-rapidapi-key': '2bb1ef27a7msha5384ba529377eep139a3djsnf3789d4c40ab' # 4 request limit
+    }
 
     conn.request("POST", "/v1/curp", payload, headers)
 
