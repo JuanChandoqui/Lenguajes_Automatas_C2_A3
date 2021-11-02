@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>686</height>
+    <width>1024</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -110,7 +110,8 @@ border-radius: 10px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
-font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(109, 109, 109);</string>
     </property>
     <property name="text">
      <string>STATUS</string>
@@ -183,12 +184,100 @@ border-radius: 10px;</string>
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>50</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>OPCIONES:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_meses_nacimientos">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>90</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);
+color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>MESES CON MAS NACIMIENTOS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_entidad_registros">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>170</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(98, 98, 147);
+color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>ENTIDAD CON MAS REGISTROS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_edad_personas">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>260</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 0);
+color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>EDAD DE LAS PERSONAS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_sexo">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>340</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 117, 172);
+color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>SEXO</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="button_show_information">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>340</x>
       <y>540</y>
-      <width>111</width>
+      <width>131</width>
       <height>41</height>
      </rect>
     </property>

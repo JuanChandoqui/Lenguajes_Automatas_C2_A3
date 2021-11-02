@@ -1,13 +1,18 @@
 import sys
+import os
+import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic, QtGui
+import matplotlib
 from Controllers.information_controller import WindowInformation
-from Models.read_csv import writeCSVFile
+from Models.read_csv import readCSVCurps
+from Models.write_csv import writeCSVFile
+from matplotlib import pyplot
 
 from Models.read_regex import readRegex
 
 curp_text = ''
-
+data_statics = readCSVCurps()
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -17,6 +22,11 @@ class Window(QMainWindow):
         self.button_search.clicked.connect(self.isClickedButtonSearch)
         self.button_exit.clicked.connect(self.close)
         self.button_show_information.clicked.connect(self.isClickedButtonShowInformation)
+        self.button_meses_nacimientos.clicked.connect(self.barMonthWithMoreBirth)       
+        self.button_entidad_registros.clicked.connect(self.barFederalEntitys)
+        self.button_edad_personas.clicked.connect(self.pieAgePerson)
+        self.button_sexo.clicked.connect(self.pieSex)
+        
 
     def isClickedButtonSearch(self):
         global curp_text
@@ -41,6 +51,45 @@ class Window(QMainWindow):
         w = WindowInformation(curp_text)
         self.demo = w
         self.demo.show()
+
+    #-------GRAPHICS---------------------------------------
+    def barMonthWithMoreBirth(self):
+        print('grafica')
+
+    
+    def barFederalEntitys(self):
+        global data_statics
+
+        x = data_statics[1].keys()
+        y = data_statics[1].values()
+
+        fig, ax = pyplot.subplots()    
+        width = 0.75 
+        ind = np.arange(len(y))  
+        ax.barh(ind, y, width, color="blue")
+        ax.set_yticks(ind+width/2)
+        ax.set_yticklabels(x, minor=False)
+        for i, v in enumerate(y):
+            ax.text(v + 3, i + .25, str(v), color='blue')
+
+        pyplot.title('Entidades Federativas')
+        pyplot.xlabel('Personas')     
+        pyplot.show()
+        pyplot.savefig(os.path.join('./Resources/Statistics/federal_entitys.png'), dpi=300, format='png', bbox_inches='tight') 
+
+    
+    def pieAgePerson(self):
+        print('grafica')
+
+    
+    def pieSex(self):
+        global data_statics
+
+        value_1 = data_statics[0].values()
+        value_2 = data_statics[0].keys()
+        pyplot.pie(value_1, labels= value_2, autopct='%.2f %%')
+        pyplot.show()
+        pyplot.savefig(os.path.join('./Resources/Statistics/sex_statics.png'), dpi=300, format='png', bbox_inches='tight') 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
