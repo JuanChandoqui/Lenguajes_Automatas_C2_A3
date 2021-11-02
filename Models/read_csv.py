@@ -1,35 +1,26 @@
 import csv
-import os
 
-def writeCSVFile(isaceptable, curp):
-        path_csv_valid = './Resources/curps_table_valid.csv'
-        path_csv_invalid = './Resources/curps_table_invalid.csv'
-        print(curp)
-        if(os.path.exists(path_csv_valid)):
-            print('FILE EXIST!')  
-            if(isaceptable):
-                with open(path_csv_valid, 'a+', newline='') as f:
-                    writer = csv.writer(f)
-                    row = [curp]
-                    writer.writerow(row)
-            else:
-                with open(path_csv_invalid, 'a+', newline='') as f:
-                    writer = csv.writer(f)
-                    row = [curp]
-                    writer.writerow(row)
-        else:
-            print('FILE NOT EXIST!')     
-            if(isaceptable):
-                header = ['ACCEPT']
-                with open(path_csv_valid, 'w+', newline='') as f:
-                    writer = csv.writer(f)
-                    writer.writerow(header)
-                    row = [curp]
-                    writer.writerow(row)
-            else:
-                header = ['NOT ACCEPT']
-                with open(path_csv_invalid, 'w+', newline='') as f:
-                    writer = csv.writer(f)
-                    writer.writerow(header)
-                    row = [curp]
-                    writer.writerow(row)
+with open('../Resources/curps_table_valid.csv', newline='') as csvfile:
+    list_curps = []
+    count_male = 0
+    count_female = 0
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in spamreader:
+        curp = ', '.join(row)
+        list_curps.append(curp)
+
+    list_curps.pop(0)
+
+    #----CALCULATE COUNT OF MENS AND FEMALES-------
+    for i in range(len(list_curps)):
+        caracters_curp = list(list_curps[i])
+
+        for i in range(len(caracters_curp)):                     
+            if(i == 10):
+                if(caracters_curp[i] == 'H'):
+                    count_male+=1
+                else:
+                    count_female+=1
+
+    print('COUNT OF MALES: ', count_male)
+    print('COUNT OF FEMALES: ', count_female)
