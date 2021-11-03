@@ -221,17 +221,26 @@ def Freq_mes(list_curp):
 def Freq_edad(list_curp):
     lst = []
     for curp_item in list_curp:
-        lst.append(""+str(curp_item[8:10])+"/"+str(curp_item[6:8])+"/20"+str(curp_item[4:6]))
+        #print(""+str(curp_item[8:10])+"/"+str(curp_item[6:8])+"/"+str(curp_item[4:6]))
+        lst.append(""+str(curp_item[8:10])+"/"+str(curp_item[6:8])+"/"+str(curp_item[4:6]))
     lst.sort()
     result = {}
+    
     for item in lst :
-        fecha_nacimiento = datetime.strptime(item, "%d/%m/%Y")
+        
+        if datetime.now().date().strftime("%y") < item[6:8] :
+            fecha_nacimiento = datetime.strptime(item[0:5]+"/19"+item[6:8], "%d/%m/%Y")
+        else:
+            fecha_nacimiento = datetime.strptime(item[0:5]+"/20"+item[6:8], "%d/%m/%Y")
+        
+        print("Fecha : ", fecha_nacimiento,"fecha actual : ", datetime.now())
         edad = relativedelta(datetime.now(), fecha_nacimiento)
+        print("edad: ",edad)
         if str(edad.years) not in result.keys():
             result[str(edad.years)] = 1
         else:
             result[str(edad.years)] += 1
-    return result  
+    return result
     
         
         
