@@ -222,7 +222,8 @@ def Freq_edad(list_curp):
     lst = []
     for curp_item in list_curp:
         lst.append(""+str(curp_item[8:10])+"/" +
-                   str(curp_item[6:8])+"/20"+str(curp_item[4:6]))
+            str(curp_item[6:8])+"/20"+str(curp_item[4:6])
+        )
     lst.sort()
     result = {}
     for item in lst:
